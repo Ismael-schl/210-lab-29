@@ -1,5 +1,7 @@
 Project Overview:
-
+This project will set up a system of lakes and their resident species of fish. It will simulate various events occuring that affect the different species of fish differently. 
+These events will be things like spawning season, increases in angler activity, and algael blooms. In this way, it models how fish populations will be affected by these very real events.
 Implementation:
-
+I plan to store the requesite information for these lakes in the std::map data structure. 
+The keys to the maps will be the string form of the name of the lakes that will be read from a text file, along with a value to complete the key-value pair. 
 Simulated Events:
