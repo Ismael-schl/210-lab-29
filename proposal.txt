@@ -3,5 +3,11 @@ This project will set up a system of lakes and their resident species of fish. I
 These events will be things like spawning season, increases in angler activity, and algael blooms. In this way, it models how fish populations will be affected by these very real events.
 Implementation:
 I plan to store the requesite information for these lakes in the std::map data structure. 
-The keys to the maps will be the string form of the name of the lakes that will be read from a text file, along with a value to complete the key-value pair. 
+The keys to the maps will be the string form of the name of the lakes that will be read from a text file, along with a value to complete the key-value pair. This value will be an array containing three lists: 1. a list of predator fish that reside in the lake 2. a list of prey fish and 3. a list of bottom feeders. 
+Each line of the txt file will contain a lake name, the affected lake's list number and a fish name. I will have functions to read this data and have input validation for this part. 
+Once the map is populated, I will output the state of each lake cleanly and their species present. I will then randomize the events that occur to the lake per time period. One time period will represent about one week, and this code will run for about 28 time periods.
 Simulated Events:
+At each time period one of the following randomized events will occur to a given lake:
+Spawning season: new fish spawn and are added to a list depending on species.
+Angler activity increase: fish species are removed from predator list, as those fish are often the most targeted.
+Algael bloom: predator and prey fish species are reduced while bottom feeders increase with the influx of dead fish to eat.
