@@ -8,6 +8,7 @@
 #include <list>
 #include <ctime>
 #include <cstdlib>
+using namespace std;
 
 //Function to simulate time periods occuring on the lake
     //Parameters would be the map and the number of time periods that occur
