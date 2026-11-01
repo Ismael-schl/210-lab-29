@@ -1,4 +1,5 @@
 //Lab 29 | COMSC 210 | Ismael Hadi
+
 //Necessary Includes
 #include <iostream>
 #include <fstream>
@@ -23,6 +24,7 @@ void displayLakes(const map<string, array<list<string>, 3>>& lakes);
 //Main function start
 int main() {
     srand(time(0));
+    
     //Initialize a map to read data from file data.txt. This map stores the name of the lake as key and an array of lists for each fish type.
     map<string, array<list<string>, 3>> lakes;
     // Open data.txt to read my initial data
@@ -35,13 +37,19 @@ int main() {
     //Read data from data.txt to populate the map
         //Iterate through every line to get lake name and affected species type (list number)
         //The species are then populated into their lakes proper list
-    //Close file
+    string name;
+    string species;
+    int listNum;
+    while (getline(fin, ))    
+        //Close file
+    fin.close();
+    
     //mockup display
     cout <<"Initial States: " << endl;
     displayLakes(lakes);
 
     //mockup simulation
-    simulate(lakes, 3);
+    simulate(lakes, NUM_WEEKS);
 
     cout << "Final States: " << endl;
     displayLakes(lakes);
@@ -50,8 +58,8 @@ int main() {
     //A for loop that goes through the map
         //In each lake, call the function to randomly apply various events to the lake for 28 time intervals. 
     //Finally, print every lake's final state.    
-//End main
-return 0;
+
+    return 0;
 }
 
 void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
@@ -60,7 +68,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
             int sel = rand() % 3 + 1;
             switch (sel) {
                 case 1:
-                cout << "Week " << i+1 << " :It's spawning season! Predator and prey populations increase." << endl;
+                cout << "Week " << i+1 << " : It's spawning season! Predator and prey populations increase." << endl;
                     if (!entry.second[0].empty()) {
                         entry.second[0].push_back(entry.second[0].front());
                     }
@@ -69,13 +77,13 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                     }
                     break;
                 case 2:
-                    cout << "Week " << i+1 << " :Increased angler activity! A predator is removed from the list." << endl;
+                    cout << "Week " << i+1 << " : Increased angler activity! A predator is removed from the list." << endl;
                     if (!entry.second[0].empty()) {
                         entry.second[0].pop_back();
                     }
                     break;
                 case 3:
-                    cout << "Week " << i+1 << " :An algal bloom occured. Bottom feeders thrive, while predators and prey partly die off." << endl;
+                    cout << "Week " << i+1 << " : An algal bloom occured. Bottom feeders thrive, while predators and prey partly die off." << endl;
                     if (!entry.second[0].empty()) {
                         entry.second[0].pop_back();
                     }
@@ -111,6 +119,6 @@ void displayLakes(const map<string, array<list<string>, 3>>& lakes) {
         for (auto& fish : entry.second[2]) {
             cout << fish << ", ";
         }
-        cout << endl;
+        cout << endl << endl;
     }
 }
