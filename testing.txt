@@ -1,3 +1,11 @@
+My program has two functions that need testing, simulate(map, weeks), and displayLakes(map).
+In order to unit test simulate, I would check the map before and after this function runs. There would be three primary cases that need testing:
+1.  
+
+
+
+
+
 #include <iostream>
 #include <fstream>
 #include <string>
