@@ -16,10 +16,9 @@ const int NUM_WEEKS = 28;
     //Parameters would be the map and the number of time periods that occur
 void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks);
 
-void displayLakes(const map<string, array<list<string>, 3>>& lakes);
 //Function to display the map's contents
     //The only parameter is the map
-//mockup version
+void displayLakes(const map<string, array<list<string>, 3>>& lakes);
 
 //Main function start
 int main() {
@@ -62,14 +61,30 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
             switch (sel) {
                 case 1:
                 cout << "Week " << i+1 << " :It's spawning season! Predator and prey populations increase." << endl;
+                    if (!entry.second[0].empty()) {
+                        entry.second[0].push_back(entry.second[0].front());
+                    }
+                    if (!entry.second[1].empty()) {
+                        entry.second[1].push_back(entry.second[1].front());
+                    }
                     break;
                 case 2:
                     cout << "Week " << i+1 << " :Increased angler activity! A predator is removed from the list." << endl;
-                    entry.second[0].pop_back();
+                    if (!entry.second[0].empty()) {
+                        entry.second[0].pop_back();
+                    }
                     break;
                 case 3:
                     cout << "Week " << i+1 << " :An algal bloom occured. Bottom feeders thrive, while predators and prey partly die off." << endl;
-                    
+                    if (!entry.second[0].empty()) {
+                        entry.second[0].pop_back();
+                    }
+                    if (!entry.second[1].empty()) {
+                        entry.second[1].pop_back();
+                    }
+                    if (!entry.second[2].empty()) {
+                        entry.second[2].push_back(entry.second[2].front());
+                    }
                     break;
             }
         }
@@ -78,9 +93,24 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
 
 void displayLakes(const map<string, array<list<string>, 3>>& lakes) {
     for (auto& entry : lakes) {
-        cout << entry.first << ": "
-        << entry.second[0].size() << " predators, "
-        << entry.second[1].size() << " prey, "
-        << entry.second[2].size() << " bottom feeders " << endl;
+        cout << entry.first << ": " << endl;
+
+        cout << "Predators (" << entry.second[0].size() << "): ";
+        for (auto& fish : entry.second[0]) {
+            cout << fish << ", ";
+        }
+        cout << endl;
+
+        cout << "Prey (" << entry.second[1].size() << "): ";
+        for (auto& fish : entry.second[1]) {
+            cout << fish << ", ";
+        }
+        cout << endl;
+
+        cout << "Bottom feeders (" << entry.second[2].size() << "): ";
+        for (auto& fish : entry.second[2]) {
+            cout << fish << ", ";
+        }
+        cout << endl;
     }
 }
