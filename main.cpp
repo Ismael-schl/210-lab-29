@@ -55,7 +55,7 @@ int main() {
     cout <<"Initial States: " << endl;
     displayLakes(lakes);
 
-    //mockup simulation
+    //simulation
     simulate(lakes, NUM_WEEKS);
 
     cout << "Final States: " << endl;
@@ -82,7 +82,9 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
             switch (sel) {
                 case 1:
                     if (!entry.second[0].empty()) {
-                        entry.second[0].push_back(entry.second[0].front());
+                        auto it = entry.second[0].begin();
+                        advance(it, rand() % entry.second[0].size());
+                        entry.second[0].push_back(*it);
                     }
                     if (!entry.second[1].empty()) {
                         entry.second[1].push_back(entry.second[1].front());
@@ -91,7 +93,6 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                     spawnwkvec.push_back(i+1);
                     break;
                 case 2:
-                    cout << "Week " << i+1 << " : Increased angler activity! A predator is removed from the list." << endl;
                     if (!entry.second[0].empty()) {
                         entry.second[0].pop_back();
                     }
@@ -99,7 +100,6 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                     anglerwkvec.push_back(i+1);
                     break;
                 case 3:
-                    cout << "Week " << i+1 << " : An algal bloom occured. Bottom feeders thrive, while predators and prey partly die off." << endl;
                     if (!entry.second[0].empty()) {
                         entry.second[0].pop_back();
                     }
@@ -107,7 +107,9 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                         entry.second[1].pop_back();
                     }
                     if (!entry.second[2].empty()) {
-                        entry.second[2].push_back(entry.second[2].front());
+                        auto ite = entry.second[0].begin();
+                        advance(ite, rand() % entry.second[0].size());
+                        entry.second[0].push_back(*ite);
                     }
                     algalCounter += 1;
                     algalwkvec.push_back(i+1);
@@ -117,17 +119,26 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
         cout << "In " << entry.first
             << " , a total of " << spawnCounter << " spawning seasons occured, taking place in the following weeks: [";
             for (int i = 0; i < spawnwkvec.size(); i++) {
-                cout << spawnwkvec[i] << ", ";
+                if (i != spawnwkvec.size() -1)    
+                    cout << spawnwkvec[i] << ", ";
+                else 
+                    cout <<  spawnwkvec[i];
             }
             cout << "] " << endl;
             cout << "A total of " << anglerCounter << " anglers fished in the following weeks: [";
             for (int i = 0; i < anglerwkvec.size(); i++) {
-                cout << anglerwkvec[i] << ", ";
+                if (i != anglerwkvec.size() -1)    
+                    cout << anglerwkvec[i] << ", ";
+                else 
+                    cout <<  anglerwkvec[i];
             }
             cout << "] " << endl;
             cout << "A total of " << algalCounter << " algal blooms happened in the following weeks: [";
             for (int i = 0; i < algalwkvec.size(); i++) {
-                cout << algalwkvec[i] << ", ";
+               if (i != algalwkvec.size() -1)    
+                    cout << algalwkvec[i] << ", ";
+                else 
+                    cout << algalwkvec[i];
             }
             cout << "] " << endl << endl;
     }
