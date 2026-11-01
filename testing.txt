@@ -127,5 +127,28 @@ int main() {
     map<string, array<list<string>, 3>> lakes;
     lakes["Test Lake"][0].push_back("Test Bass");
     lakes["Test Lake"][1].push_back("Test Minnow");
-    lakes["Test Lake"][0].push_back("Test Catfish");
+    lakes["Test Lake"][2].push_back("Test Catfish");
+
+    simulate(lakes, 28);
+    bool ok = true;
+    for (const auto& fish : lakes["Test Lake"][0])
+        if (fish != "Test Bass") {
+            ok = false;
+        }
+    for (const auto& fish : lakes["Test Lake"][1])
+        if (fish != "Test Minnow") {
+            ok = false;
+        }
+    for (const auto& fish : lakes["Test Lake"][2])
+        if (fish != "Test Catfish") {
+            ok = false;
+        }
+    cout << "Test 1: ";
+    if (ok) {
+        cout << "Pass";
+    }
+    else
+        cout << "Fail";
+     
+
 }
