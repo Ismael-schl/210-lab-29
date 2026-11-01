@@ -1,7 +1,10 @@
 My program has two functions that need testing, simulate(map, weeks), and displayLakes(map).
 In order to unit test simulate, I would check the map before and after this function runs. There would be three primary cases that need testing:
-1.  
+1. typical input, in which the number of weeks is a reasonably large number. It should affect the predator, prey, and bottom feeders lists and output the weeks in which each event occurs.
+2. input where the map contains 1 or more lakes with empty lists. The function should not affect said lakes and run without errors.
+3. input where the number of weeks is 0. The map should remain unchanged.
 
+For displayLakes, unit testing could be checking if it properly outputs a simple, one lake map without changing any of this lake's species.
 
 
 
