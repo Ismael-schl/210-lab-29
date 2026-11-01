@@ -80,9 +80,11 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
             switch (sel) {
                 case 1:
                     if (!entry.second[0].empty()) {
-                        auto it = entry.second[0].begin();
-                        advance(it, rand() % entry.second[0].size());
-                        entry.second[0].push_back(*it);
+                        for (int k = 0; k < 2; k++) {
+                            auto it = entry.second[0].begin();
+                            advance(it, rand() % entry.second[0].size());
+                            entry.second[0].push_back(*it);
+                        }
                     }
                     if (!entry.second[1].empty()) {
                         entry.second[1].push_back(entry.second[1].front());
@@ -107,7 +109,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                     if (!entry.second[2].empty()) {
                         auto ite = entry.second[2].begin();
                         advance(ite, rand() % entry.second[2].size());
-                        entry.second[0].push_back(*ite);
+                        entry.second[2].push_back(*ite);
                     }
                     algalCounter += 1;
                     algalwkvec.push_back(i+1);

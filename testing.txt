@@ -1,0 +1,10 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <map>
+#include <array>
+#include <list>
+#include <ctime>
+#include <cstdlib>
+#include <vector>
+using namespace std;
