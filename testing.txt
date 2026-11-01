@@ -151,9 +151,9 @@ int main() {
         cout << "Fail";
     
     map<string, array<list<string>, 3>> emptyLakes;
-    emptyLakes["Empty Lake:"];
+    emptyLakes["Empty Lake"];
     simulate(emptyLakes, 28);
-    ok = emptyLakes["Empty Lake"][0].empty() && emptyLakes["Empty Lake"][1].empty()  emptyLakes["Empty Lake"][2].empty();
+    ok = emptyLakes["Empty Lake"][0].empty() && emptyLakes["Empty Lake"][1].empty() && emptyLakes["Empty Lake"][2].empty();
     cout << "Test 2: ";
     if (ok) {
         cout << "Pass";
@@ -163,7 +163,26 @@ int main() {
     }
 
     map<string, array<list<string>, 3>> zeroLakes;
-    zeroLakes["zeroLakes"][0].push_back("Test Bass");
-    zeroLakes["zeroLakes"][0].push_back("Test Bass");
-    zeroLakes["zeroLakes"][0].push_back("Test Bass");
+    zeroLakes["Zero Lake"][0].push_back("Test Bass");
+    zeroLakes["Zero Lake"][1].push_back("Test Minnow");
+    zeroLakes["Zero Lake"][2].push_back("Test Catfish");
+    simulate(zeroLakes, 0);
+    ok = false;
+    if (zeroLakes["Zero Lake"][0].size() == 1 && zeroLakes["Zero Lake"][1].size() == 1 && zeroLakes["Zero Lake"][2].size() == 1 ) {
+        ok = true;
+    }
+    cout << "Test 3: ";
+    if (ok) {
+        cout << "Pass";
+    }
+    else {
+        cout << "Fail";
+    }
+
+    cout << "Display test: Zero Lake should output Predators (1): Test Bass,
+                                                   Prey (1): Test Minnow,
+                                                   Bottom feeders (1): Test Catfish,";
+
+    displayLakes(zeroLakes);
+    return 0;    
 }
