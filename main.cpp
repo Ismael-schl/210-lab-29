@@ -88,6 +88,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                         entry.second[1].push_back(entry.second[1].front());
                     }
                     spawnCounter += 1;
+                    spawnwkvec.push_back(i+1);
                     break;
                 case 2:
                     cout << "Week " << i+1 << " : Increased angler activity! A predator is removed from the list." << endl;
@@ -95,6 +96,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                         entry.second[0].pop_back();
                     }
                     anglerCounter += 1;
+                    anglerwkvec.push_back(i+1);
                     break;
                 case 3:
                     cout << "Week " << i+1 << " : An algal bloom occured. Bottom feeders thrive, while predators and prey partly die off." << endl;
@@ -108,9 +110,26 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                         entry.second[2].push_back(entry.second[2].front());
                     }
                     algalCounter += 1;
+                    algalwkvec.push_back(i+1);
                     break;
             }
         }
+        cout << "In " << entry.first
+            << " , a total of " << spawnCounter << " spawning seasons occured, taking place in the following weeks: [";
+            for (int i = 0; i < spawnwkvec.size(); i++) {
+                cout << spawnwkvec[i] << ", ";
+            }
+            cout << "] " << endl;
+            cout << "A total of " << anglerCounter << " anglers fished in the following weeks: [";
+            for (int i = 0; i < anglerwkvec.size(); i++) {
+                cout << anglerwkvec[i] << ", ";
+            }
+            cout << "] " << endl;
+            cout << "A total of " << algalCounter << " algal blooms happened in the following weeks: [";
+            for (int i = 0; i < algalwkvec.size(); i++) {
+                cout << algalwkvec[i] << ", ";
+            }
+            cout << "] " << endl << endl;
     }
 }
 
