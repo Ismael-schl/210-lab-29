@@ -157,19 +157,28 @@ void displayLakes(const map<string, array<list<string>, 3>>& lakes) {
 
         cout << "Predators (" << entry.second[0].size() << "): ";
         for (auto& fish : entry.second[0]) {
-            cout << fish << ", ";
+            cout << fish;
+            if (&fish != &entry.second[0].back()) {
+                cout << ", ";
+            }
         }
         cout << endl;
 
         cout << "Prey (" << entry.second[1].size() << "): ";
         for (auto& fish : entry.second[1]) {
-            cout << fish << ", ";
+            cout << fish;
+            if (&fish != &entry.second[1].back()) {
+                cout << ", ";
+            }
         }
         cout << endl;
 
         cout << "Bottom feeders (" << entry.second[2].size() << "): ";
         for (auto& fish : entry.second[2]) {
-            cout << fish << ", ";
+            cout << fish;
+            if (&fish != &entry.second[2].back()) {
+                cout << ", ";
+            }
         }
         cout << endl << endl;
     }

@@ -3,4 +3,5 @@ Bug Log:
 2. Because algal blooms and angler activity were wiping out the predator populations for all lakes, I had to double the amount of predators that spawned during spawning season.
 3. I hadn't considered the case in which lakes had zero fish of a specific group. This would have caused errors when simulate was run on said lakes. To fix this, I added if statements to regulate the events to occuring on a group if and only if there were already fish in that group. This is also more realistic, because fish would not just spawn without fish being present already.
 4. I initially had spawning seasons increase species that happened to be the first element of their respective lists. I then changed it to select a random fish species present in the list to reproduce, to have less lopsided data.
-5.   
+5. I forgot to have bottom feeders increase during spawning season. To fix this, I copied and pasted predator reproduction code and adjusted it to affect bottom feeders.
+7. displayLakes provided an extra comma at the end of the fish lists. Fix: a simple address checking if statement now checks if the element is the last element, if not, it adds a comma and a space to the output.
