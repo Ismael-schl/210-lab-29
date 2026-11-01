@@ -9,6 +9,7 @@
 #include <list>
 #include <ctime>
 #include <cstdlib>
+#include <vector>
 using namespace std;
 
 const int NUM_WEEKS = 28;
@@ -40,7 +41,13 @@ int main() {
     string name;
     string species;
     int listNum;
-    while (getline(fin, ))    
+
+    while (getline(fin, name, ',')) {
+        fin >> listNum;
+        fin.ignore();
+        getline(fin, species);
+        lakes[name][listNum].push_back(species);
+    }    
         //Close file
     fin.close();
     
@@ -64,23 +71,30 @@ int main() {
 
 void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
     for (auto& entry : lakes) {
+        int spawnCounter = 0;
+        vector<int> spawnwkvec;
+        int anglerCounter = 0;
+        vector<int> anglerwkvec;
+        int algalCounter = 0;
+        vector<int> algalwkvec;
         for (int i = 0; i < numWeeks; i++) {
             int sel = rand() % 3 + 1;
             switch (sel) {
                 case 1:
-                cout << "Week " << i+1 << " : It's spawning season! Predator and prey populations increase." << endl;
                     if (!entry.second[0].empty()) {
                         entry.second[0].push_back(entry.second[0].front());
                     }
                     if (!entry.second[1].empty()) {
                         entry.second[1].push_back(entry.second[1].front());
                     }
+                    spawnCounter += 1;
                     break;
                 case 2:
                     cout << "Week " << i+1 << " : Increased angler activity! A predator is removed from the list." << endl;
                     if (!entry.second[0].empty()) {
                         entry.second[0].pop_back();
                     }
+                    anglerCounter += 1;
                     break;
                 case 3:
                     cout << "Week " << i+1 << " : An algal bloom occured. Bottom feeders thrive, while predators and prey partly die off." << endl;
@@ -93,6 +107,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                     if (!entry.second[2].empty()) {
                         entry.second[2].push_back(entry.second[2].front());
                     }
+                    algalCounter += 1;
                     break;
             }
         }
@@ -101,7 +116,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
 
 void displayLakes(const map<string, array<list<string>, 3>>& lakes) {
     for (auto& entry : lakes) {
-        cout << entry.first << ": " << endl;
+        cout << entry.first << ": " << endl << endl;
 
         cout << "Predators (" << entry.second[0].size() << "): ";
         for (auto& fish : entry.second[0]) {

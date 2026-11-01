@@ -1,0 +1,120 @@
+Lake Tahoe,0,Lake Trout
+Lake Tahoe,0,Rainbow Trout
+Lake Tahoe,0,Brown Trout
+Lake Tahoe,0,Cutthroat Trout
+Lake Tahoe,0,Largemouth Bass
+Lake Tahoe,0,Smallmouth Bass
+Lake Tahoe,1,Kokanee Salmon
+Lake Tahoe,1,Tui Chub
+Lake Tahoe,1,Lahontan Redside
+Lake Tahoe,1,Speckled Dace
+Lake Tahoe,1,Bluegill
+Lake Tahoe,1,Mosquitofish
+Lake Tahoe,1,Golden Shiner
+Lake Tahoe,2,Tahoe Sucker
+Lake Tahoe,2,Mountain Sucker
+Lake Tahoe,2,Mountain Whitefish
+Lake Tahoe,2,Channel Catfish
+Lake Tahoe,2,Brown Bullhead
+Lake Tahoe,2,Sculpin
+Lake Tahoe,2,Common Carp
+Clear Lake,0,Largemouth Bass
+Clear Lake,0,Black Crappie
+Clear Lake,0,White Crappie
+Clear Lake,0,Striped Bass
+Clear Lake,0,Flathead Catfish
+Clear Lake,0,Spotted Bass
+Clear Lake,1,Threadfin Shad
+Clear Lake,1,Inland Silverside
+Clear Lake,1,Bluegill
+Clear Lake,1,Redear Sunfish
+Clear Lake,1,Green Sunfish
+Clear Lake,1,Golden Shiner
+Clear Lake,1,Hitch
+Clear Lake,2,Channel Catfish
+Clear Lake,2,White Catfish
+Clear Lake,2,Brown Bullhead
+Clear Lake,2,Common Carp
+Clear Lake,2,Sacramento Sucker
+Clear Lake,2,Goldfish
+Clear Lake,2,Blue Catfish
+Folsom Lake,0,Largemouth Bass
+Folsom Lake,0,Smallmouth Bass
+Folsom Lake,0,Spotted Bass
+Folsom Lake,0,Rainbow Trout
+Folsom Lake,0,Brown Trout
+Folsom Lake,0,Chinook Salmon
+Folsom Lake,1,Threadfin Shad
+Folsom Lake,1,Bluegill
+Folsom Lake,1,Redear Sunfish
+Folsom Lake,1,Green Sunfish
+Folsom Lake,1,Golden Shiner
+Folsom Lake,1,Kokanee Salmon
+Folsom Lake,1,Pumpkinseed
+Folsom Lake,2,Channel Catfish
+Folsom Lake,2,White Catfish
+Folsom Lake,2,Common Carp
+Folsom Lake,2,Sacramento Sucker
+Folsom Lake,2,Brown Bullhead
+Folsom Lake,2,Black Bullhead
+Folsom Lake,2,Sculpin
+Lake Shasta,0,Largemouth Bass
+Lake Shasta,0,Smallmouth Bass
+Lake Shasta,0,Spotted Bass
+Lake Shasta,0,Rainbow Trout
+Lake Shasta,0,Brown Trout
+Lake Shasta,0,Chinook Salmon
+Lake Shasta,1,Threadfin Shad
+Lake Shasta,1,Bluegill
+Lake Shasta,1,Redear Sunfish
+Lake Shasta,1,Green Sunfish
+Lake Shasta,1,Golden Shiner
+Lake Shasta,1,Kokanee Salmon
+Lake Shasta,1,Hitch
+Lake Shasta,2,Channel Catfish
+Lake Shasta,2,White Catfish
+Lake Shasta,2,Brown Bullhead
+Lake Shasta,2,Common Carp
+Lake Shasta,2,Sacramento Sucker
+Lake Shasta,2,Sculpin
+Lake Shasta,2,Black Bullhead
+Lake Berryessa,0,Largemouth Bass
+Lake Berryessa,0,Smallmouth Bass
+Lake Berryessa,0,Spotted Bass
+Lake Berryessa,0,Rainbow Trout
+Lake Berryessa,0,Black Crappie
+Lake Berryessa,0,White Crappie
+Lake Berryessa,1,Bluegill
+Lake Berryessa,1,Redear Sunfish
+Lake Berryessa,1,Green Sunfish
+Lake Berryessa,1,Golden Shiner
+Lake Berryessa,1,Threadfin Shad
+Lake Berryessa,1,Inland Silverside
+Lake Berryessa,1,Mosquitofish
+Lake Berryessa,2,Channel Catfish
+Lake Berryessa,2,White Catfish
+Lake Berryessa,2,Brown Bullhead
+Lake Berryessa,2,Common Carp
+Lake Berryessa,2,Sacramento Sucker
+Lake Berryessa,2,Sculpin
+Lake Berryessa,2,Goldfish
+Lake Oroville,0,Largemouth Bass
+Lake Oroville,0,Smallmouth Bass
+Lake Oroville,0,Spotted Bass
+Lake Oroville,0,Rainbow Trout
+Lake Oroville,0,Brown Trout
+Lake Oroville,0,Chinook Salmon
+Lake Oroville,1,Threadfin Shad
+Lake Oroville,1,Bluegill
+Lake Oroville,1,Redear Sunfish
+Lake Oroville,1,Green Sunfish
+Lake Oroville,1,Golden Shiner
+Lake Oroville,1,Kokanee Salmon
+Lake Oroville,1,Pumpkinseed
+Lake Oroville,2,Channel Catfish
+Lake Oroville,2,White Catfish
+Lake Oroville,2,Brown Bullhead
+Lake Oroville,2,Common Carp
+Lake Oroville,2,Sacramento Sucker
+Lake Oroville,2,Black Bullhead
+Lake Oroville,2,Sculpin
