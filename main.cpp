@@ -56,15 +56,22 @@ return 0;
 }
 
 void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
-    int sel = rand() % 3 + 1;
-    for (int i = 0; i < numWeeks; i++) {
-        switch (sel) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
+    for (auto& entry : lakes) {
+        for (int i = 0; i < numWeeks; i++) {
+            int sel = rand() % 3 + 1;
+            switch (sel) {
+                case 1:
+                cout << "Week " << i+1 << " :It's spawning season! Predator and prey populations increase." << endl;
+                    break;
+                case 2:
+                    cout << "Week " << i+1 << " :Increased angler activity! A predator is removed from the list." << endl;
+                    entry.second[0].pop_back();
+                    break;
+                case 3:
+                    cout << "Week " << i+1 << " :An algal bloom occured. Bottom feeders thrive, while predators and prey partly die off." << endl;
+                    
+                    break;
+            }
         }
     }
 }
