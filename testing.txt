@@ -149,6 +149,21 @@ int main() {
     }
     else
         cout << "Fail";
-     
+    
+    map<string, array<list<string>, 3>> emptyLakes;
+    emptyLakes["Empty Lake:"];
+    simulate(emptyLakes, 28);
+    ok = emptyLakes["Empty Lake"][0].empty() && emptyLakes["Empty Lake"][1].empty()  emptyLakes["Empty Lake"][2].empty();
+    cout << "Test 2: ";
+    if (ok) {
+        cout << "Pass";
+    }
+    else {
+        cout << "Fail";
+    }
 
+    map<string, array<list<string>, 3>> zeroLakes;
+    zeroLakes["zeroLakes"][0].push_back("Test Bass");
+    zeroLakes["zeroLakes"][0].push_back("Test Bass");
+    zeroLakes["zeroLakes"][0].push_back("Test Bass");
 }
