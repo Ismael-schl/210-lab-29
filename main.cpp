@@ -51,8 +51,8 @@ int main() {
         //Close file
     fin.close();
     
-    cout <<"Initial States: " << endl 
-    <<     "----------------" << endl;
+    cout <<"Initial Lake Populations: " << endl 
+    <<     "--------------------------" << endl;
     displayLakes(lakes);
 
     //simulation
@@ -61,8 +61,8 @@ int main() {
 
     simulate(lakes, NUM_WEEKS);
 
-    cout << "Final States: " << endl
-         <<   "--------------" << endl;
+    cout << "Final Lake Populations: " << endl
+         << "------------------------" << endl;
     displayLakes(lakes); 
     return 0;
 }
@@ -87,7 +87,14 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                         }
                     }
                     if (!entry.second[1].empty()) {
-                        entry.second[1].push_back(entry.second[1].front());
+                        auto ite = entry.second[1].begin();
+                        advance(ite, rand() % entry.second[1].size());
+                        entry.second[1].push_back(*ite);
+                    }
+                    if (!entry.second[2].empty()) {
+                        auto ite = entry.second[2].begin();
+                        advance(ite, rand() % entry.second[2].size());
+                        entry.second[2].push_back(*ite);
                     }
                     spawnCounter += 1;
                     spawnwkvec.push_back(i+1);
