@@ -14,33 +14,25 @@ const int NUM_WEEKS = 28;
 
 //Function to simulate time periods occuring on the lake
     //Parameters would be the map and the number of time periods that occur
-//mockup version:
-void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
-    cout << "simulate received " << lakes.size() << " lakes for " <<numWeeks << " week(s)" << endl;
-    lakes.begin()->second[1].push_back("Bluegill");
-}
+void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks);
+
+void displayLakes(const map<string, array<list<string>, 3>>& lakes);
 //Function to display the map's contents
     //The only parameter is the map
 //mockup version
-void displayLakes(const map<string, array<list<string>, 3>>& lakes) {
-    for (auto& entry : lakes) {
-        cout << entry.first << ": "
-        << entry.second[0].size() << " predators, "
-        << entry.second[1].size() << " prey, "
-        << entry.second[2].size() << " bottom feeders " << endl;
-    }
-}
+
 //Main function start
 int main() {
     srand(time(0));
     //Initialize a map to read data from file data.txt. This map stores the name of the lake as key and an array of lists for each fish type.
     map<string, array<list<string>, 3>> lakes;
-    //mockup version, no file input
-    lakes["Test Lake"][0].push_back("Bass");
-    lakes["Test Lake"][1].push_back("Minnow");
-    lakes["Test Lake"][2] .push_back("Catfish");
     // Open data.txt to read my initial data
-        //if file opening fails, print an error and exit
+    ifstream fin("data.txt");
+    if (!fin.is_open()) {
+       cerr <<"Error opening file." << endl;
+       return 1;
+    }
+
     //Read data from data.txt to populate the map
         //Iterate through every line to get lake name and affected species type (list number)
         //The species are then populated into their lakes proper list
@@ -61,4 +53,27 @@ int main() {
     //Finally, print every lake's final state.    
 //End main
 return 0;
+}
+
+void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
+    int sel = rand() % 3 + 1;
+    for (int i = 0; i < numWeeks; i++) {
+        switch (sel) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+    }
+}
+
+void displayLakes(const map<string, array<list<string>, 3>>& lakes) {
+    for (auto& entry : lakes) {
+        cout << entry.first << ": "
+        << entry.second[0].size() << " predators, "
+        << entry.second[1].size() << " prey, "
+        << entry.second[2].size() << " bottom feeders " << endl;
+    }
 }
