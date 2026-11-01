@@ -51,21 +51,19 @@ int main() {
         //Close file
     fin.close();
     
-    //mockup display
-    cout <<"Initial States: " << endl;
+    cout <<"Initial States: " << endl 
+    <<     "----------------" << endl;
     displayLakes(lakes);
 
     //simulation
+    cout << "Simulation results:" << endl;
+    cout << "-------------------\n";
+
     simulate(lakes, NUM_WEEKS);
 
-    cout << "Final States: " << endl;
-    displayLakes(lakes);
-    
-    //Use the display function to print every lake's initial state cleanly
-    //A for loop that goes through the map
-        //In each lake, call the function to randomly apply various events to the lake for 28 time intervals. 
-    //Finally, print every lake's final state.    
-
+    cout << "Final States: " << endl
+         <<   "--------------" << endl;
+    displayLakes(lakes); 
     return 0;
 }
 
@@ -107,8 +105,8 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                         entry.second[1].pop_back();
                     }
                     if (!entry.second[2].empty()) {
-                        auto ite = entry.second[0].begin();
-                        advance(ite, rand() % entry.second[0].size());
+                        auto ite = entry.second[2].begin();
+                        advance(ite, rand() % entry.second[2].size());
                         entry.second[0].push_back(*ite);
                     }
                     algalCounter += 1;
@@ -117,7 +115,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
             }
         }
         cout << "In " << entry.first
-            << " , a total of " << spawnCounter << " spawning seasons occured, taking place in the following weeks: [";
+            << ", a total of " << spawnCounter << " spawning seasons occured, taking place in the following weeks: [";
             for (int i = 0; i < spawnwkvec.size(); i++) {
                 if (i != spawnwkvec.size() -1)    
                     cout << spawnwkvec[i] << ", ";
