@@ -1,0 +1,193 @@
+My program has two functions that need testing, simulate(map, weeks), and displayLakes(map).
+In order to unit test simulate, I would check the map before and after this function runs. There would be three primary cases that need testing:
+1. typical input, in which the number of weeks is a reasonably large number. It should only contain original species, and list sizes shouldn't exceeed maximum possible growth (in this case the growth is provided by the function itself).
+2. input where the map contains 1 or more lakes with empty lists. The function should not affect said lakes and run without errors.
+3. input where the number of weeks is 0. The map should remain unchanged.
+
+For displayLakes, unit testing could be checking if it properly outputs a simple, one lake map without changing any of this lake's species.
+
+
+
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <map>
+#include <array>
+#include <list>
+#include <ctime>
+#include <cstdlib>
+#include <vector>
+using namespace std;
+
+void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
+    for (auto& entry : lakes) {
+        int spawnCounter = 0;
+        vector<int> spawnwkvec;
+        int anglerCounter = 0;
+        vector<int> anglerwkvec;
+        int algalCounter = 0;
+        vector<int> algalwkvec;
+        for (int i = 0; i < numWeeks; i++) {
+            int sel = rand() % 3 + 1;
+            switch (sel) {
+                case 1:
+                    if (!entry.second[0].empty()) {
+                        for (int k = 0; k < 2; k++) {
+                            auto it = entry.second[0].begin();
+                            advance(it, rand() % entry.second[0].size());
+                            entry.second[0].push_back(*it);
+                        }
+                    }
+                    if (!entry.second[1].empty()) {
+                        entry.second[1].push_back(entry.second[1].front());
+                    }
+                    spawnCounter += 1;
+                    spawnwkvec.push_back(i+1);
+                    break;
+                case 2:
+                    if (!entry.second[0].empty()) {
+                        entry.second[0].pop_back();
+                    }
+                    anglerCounter += 1;
+                    anglerwkvec.push_back(i+1);
+                    break;
+                case 3:
+                    if (!entry.second[0].empty()) {
+                        entry.second[0].pop_back();
+                    }
+                    if (!entry.second[1].empty()) {
+                        entry.second[1].pop_back();
+                    }
+                    if (!entry.second[2].empty()) {
+                        auto ite = entry.second[2].begin();
+                        advance(ite, rand() % entry.second[2].size());
+                        entry.second[2].push_back(*ite);
+                    }
+                    algalCounter += 1;
+                    algalwkvec.push_back(i+1);
+                    break;
+            }
+        }
+        cout << "In " << entry.first
+            << ", a total of " << spawnCounter << " spawning seasons occured, taking place in the following weeks: [";
+            for (int i = 0; i < spawnwkvec.size(); i++) {
+                if (i != spawnwkvec.size() -1)    
+                    cout << spawnwkvec[i] << ", ";
+                else 
+                    cout <<  spawnwkvec[i];
+            }
+            cout << "] " << endl;
+            cout << "A total of " << anglerCounter << " anglers fished in the following weeks: [";
+            for (int i = 0; i < anglerwkvec.size(); i++) {
+                if (i != anglerwkvec.size() -1)    
+                    cout << anglerwkvec[i] << ", ";
+                else 
+                    cout <<  anglerwkvec[i];
+            }
+            cout << "] " << endl;
+            cout << "A total of " << algalCounter << " algal blooms happened in the following weeks: [";
+            for (int i = 0; i < algalwkvec.size(); i++) {
+               if (i != algalwkvec.size() -1)    
+                    cout << algalwkvec[i] << ", ";
+                else 
+                    cout << algalwkvec[i];
+            }
+            cout << "] " << endl << endl;
+    }
+}
+
+void displayLakes(const map<string, array<list<string>, 3>>& lakes) {
+    for (auto& entry : lakes) {
+        cout << entry.first << ": " << endl << endl;
+
+        cout << "Predators (" << entry.second[0].size() << "): ";
+        for (auto& fish : entry.second[0]) {
+            cout << fish << ", ";
+        }
+        cout << endl;
+
+        cout << "Prey (" << entry.second[1].size() << "): ";
+        for (auto& fish : entry.second[1]) {
+            cout << fish << ", ";
+        }
+        cout << endl;
+
+        cout << "Bottom feeders (" << entry.second[2].size() << "): ";
+        for (auto& fish : entry.second[2]) {
+            cout << fish << ", ";
+        }
+        cout << endl << endl;
+    }
+}
+
+int main() {
+    srand(time(0));
+
+    map<string, array<list<string>, 3>> lakes;
+    for (int i = 0; i < 10; i++) {
+        lakes["Test Lake"][0].push_back("Test Bass");
+        lakes["Test Lake"][1].push_back("Test Minnow");
+        lakes["Test Lake"][2].push_back("Test Catfish");
+    }
+    simulate(lakes, 28);
+    bool ok = true;
+    for (const auto& fish : lakes["Test Lake"][0])
+        if (fish != "Test Bass") {
+            ok = false;
+        }
+    for (const auto& fish : lakes["Test Lake"][1])
+        if (fish != "Test Minnow") {
+            ok = false;
+        }
+    for (const auto& fish : lakes["Test Lake"][2])
+        if (fish != "Test Catfish") {
+            ok = false;
+        }
+    if (lakes["Test Lake"][0].size() > 66) ok = false;
+    if (lakes["Test Lake"][1].size() > 38) ok = false;
+    if (lakes["Test Lake"][2].size() > 38) ok = false;
+    cout << "Test 1: ";
+    if (ok) {
+        cout << "Pass" << endl;
+    }
+    else
+        cout << "Fail" << endl;
+    
+    map<string, array<list<string>, 3>> emptyLakes;
+    emptyLakes["Empty Lake"];
+    simulate(emptyLakes, 28);
+    ok = emptyLakes["Empty Lake"][0].empty() && emptyLakes["Empty Lake"][1].empty() && emptyLakes["Empty Lake"][2].empty();
+    cout << "Test 2: ";
+    if (ok) {
+        cout << "Pass" << endl;
+    }
+    else {
+        cout << "Fail" << endl;
+    }
+
+    map<string, array<list<string>, 3>> zeroLakes;
+    zeroLakes["Zero Lake"][0].push_back("Test Bass");
+    zeroLakes["Zero Lake"][1].push_back("Test Minnow");
+    zeroLakes["Zero Lake"][2].push_back("Test Catfish");
+    simulate(zeroLakes, 0);
+    ok = false;
+    if (zeroLakes["Zero Lake"][0].size() == 1 && zeroLakes["Zero Lake"][1].size() == 1 && zeroLakes["Zero Lake"][2].size() == 1 ) {
+        ok = true;
+    }
+    cout << "Test 3: ";
+    if (ok) {
+        cout << "Pass" << endl;
+    }
+    else {
+        cout << "Fail" << endl;
+    }
+
+    cout << "Display test: Zero Lake should output: Predators (1): Test Bass,"
+        << endl << "                                         Prey (1): Test Minnow,"
+        << endl << "                                           Bottom feeders (1): Test Catfish,";
+
+    cout << "True output: " << endl;
+    displayLakes(zeroLakes);
+    return 0;    
+}
