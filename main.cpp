@@ -1,4 +1,4 @@
-//Lab 29 | COMSC 210 | Ismael Hadi
+//Lab 31 | COMSC 210 | Ismael Hadi
 
 //Necessary Includes
 #include <iostream>
@@ -48,11 +48,11 @@ int main() {
         getline(fin, species);
         lakes[name][listNum].push_back(species);
     }    
-        //Close file
+    //Close file
     fin.close();
     
-    cout <<"Initial States: " << endl 
-    <<     "----------------" << endl;
+    cout <<"Initial Lake Populations: " << endl 
+    <<     "--------------------------" << endl;
     displayLakes(lakes);
 
     //simulation
@@ -61,8 +61,8 @@ int main() {
 
     simulate(lakes, NUM_WEEKS);
 
-    cout << "Final States: " << endl
-         <<   "--------------" << endl;
+    cout << "Final Lake Populations: " << endl
+         << "------------------------" << endl;
     displayLakes(lakes); 
     return 0;
 }
@@ -87,7 +87,14 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
                         }
                     }
                     if (!entry.second[1].empty()) {
-                        entry.second[1].push_back(entry.second[1].front());
+                        auto ite = entry.second[1].begin();
+                        advance(ite, rand() % entry.second[1].size());
+                        entry.second[1].push_back(*ite);
+                    }
+                    if (!entry.second[2].empty()) {
+                        auto ite = entry.second[2].begin();
+                        advance(ite, rand() % entry.second[2].size());
+                        entry.second[2].push_back(*ite);
                     }
                     spawnCounter += 1;
                     spawnwkvec.push_back(i+1);
@@ -117,7 +124,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
             }
         }
         cout << "In " << entry.first
-            << ", a total of " << spawnCounter << " spawning seasons occured, taking place in the following weeks: [";
+            << ", a total of " << spawnCounter << " spawning seasons occurred, taking place in the following weeks: [";
             for (int i = 0; i < spawnwkvec.size(); i++) {
                 if (i != spawnwkvec.size() -1)    
                     cout << spawnwkvec[i] << ", ";
@@ -150,19 +157,28 @@ void displayLakes(const map<string, array<list<string>, 3>>& lakes) {
 
         cout << "Predators (" << entry.second[0].size() << "): ";
         for (auto& fish : entry.second[0]) {
-            cout << fish << ", ";
+            cout << fish;
+            if (&fish != &entry.second[0].back()) {
+                cout << ", ";
+            }
         }
         cout << endl;
 
         cout << "Prey (" << entry.second[1].size() << "): ";
         for (auto& fish : entry.second[1]) {
-            cout << fish << ", ";
+            cout << fish;
+            if (&fish != &entry.second[1].back()) {
+                cout << ", ";
+            }
         }
         cout << endl;
 
         cout << "Bottom feeders (" << entry.second[2].size() << "): ";
         for (auto& fish : entry.second[2]) {
-            cout << fish << ", ";
+            cout << fish;
+            if (&fish != &entry.second[2].back()) {
+                cout << ", ";
+            }
         }
         cout << endl << endl;
     }
