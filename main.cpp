@@ -48,7 +48,7 @@ int main() {
         getline(fin, species);
         lakes[name][listNum].push_back(species);
     }    
-        //Close file
+    //Close file
     fin.close();
     
     cout <<"Initial Lake Populations: " << endl 
