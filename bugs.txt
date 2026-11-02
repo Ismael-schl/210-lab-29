@@ -6,4 +6,7 @@ Bug Log:
 5. I forgot to have bottom feeders increase during spawning season. To fix this, I copied and pasted predator reproduction code and adjusted it to affect bottom feeders.
 6. displayLakes provided an extra comma at the end of the fish lists. Fix: a simple address checking if statement now checks if the element is the last element, if not, it adds a comma and a space to the output.
 7. In the file-reading portion of the code, I accidentally used the string variable "names" to represent both the lake name and the fish name. I had to use both "names" and "species" instead. 
-8. I originally wrote "const" in the map parameter for simulate. 
+8. I originally wrote "const" in the map parameter for simulate. I had to take this out, because simulate definitely affects the map.
+9. I accidentally had the bottom feeder block check whether the bottom feeder list was empty but then copy from the predator list. I had to change the list that this block affected.
+10. In the unit testing, I messed up the way the output looked. To change this, I put endl where appropriate to prevent same line output.
+11. Following bug number 6's fix, I had to change the unit testing output. I removed the ending commas from the model output.

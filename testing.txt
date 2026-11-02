@@ -193,8 +193,8 @@ int main() {
     }
 
     cout << "Display test: Zero Lake should output: Predators (1): Test Bass"
-        << endl << "                                         Prey (1): Test Minnow"
-        << endl << "                                           Bottom feeders (1): Test Catfish";
+        << endl << "Prey (1): Test Minnow"
+        << endl << "Bottom feeders (1): Test Catfish" << endl;
 
     cout << "True output: " << endl;
     displayLakes(zeroLakes);

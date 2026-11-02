@@ -1,4 +1,4 @@
-//Lab 29 | COMSC 210 | Ismael Hadi
+//Lab 31 | COMSC 210 | Ismael Hadi
 
 //Necessary Includes
 #include <iostream>
@@ -124,7 +124,7 @@ void simulate(map<string, array<list<string>, 3>>& lakes, int numWeeks) {
             }
         }
         cout << "In " << entry.first
-            << ", a total of " << spawnCounter << " spawning seasons occured, taking place in the following weeks: [";
+            << ", a total of " << spawnCounter << " spawning seasons occurred, taking place in the following weeks: [";
             for (int i = 0; i < spawnwkvec.size(); i++) {
                 if (i != spawnwkvec.size() -1)    
                     cout << spawnwkvec[i] << ", ";
